@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "gauss.h"
 
 double mfabs(double d){ return (d >= 0) ? d : -d;}
@@ -70,7 +69,6 @@ double det_matrix(Matrix *mat){
  */
 int eliminate(Matrix *mat, Matrix *b){
     double det = det_matrix(mat);
-    printf("det=%f\n", det);
     if (det_matrix(mat) == 0)
         return 1;
     
