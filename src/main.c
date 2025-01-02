@@ -6,7 +6,7 @@
 
 
 int main(int argc, char **argv) {
-	int res;
+	int ress;
 	Matrix *A = readFromFile(argv[1]);
 	Matrix *b = readFromFile(argv[2]);
 	Matrix *x;
@@ -16,8 +16,8 @@ int main(int argc, char **argv) {
 	printToScreen(A);
 	printToScreen(b);
 
-	res = eliminate(A, b);
-    if (res == 1) {
+	ress = eliminate(A, b);
+    if (ress == 1) {
         fprintf(stderr, "Błąd! Macierz osobliwa.\n");
         return 1;
     }
@@ -28,18 +28,17 @@ int main(int argc, char **argv) {
         return 1;
     }
     
-    res = backsubst(x, A, b);
-    if (res == 1) {
+    ress = backsubst(x, A, b);
+    if (ress == 1) {
         fprintf(stderr, "Błąd! Dzielenie przez 0.\n");
         return 1;
-    } else if (res == 2) {
+    } else if (ress == 2) {
         fprintf(stderr,"Błąd! Macierz nie jest kwadratowa.\n");
         return 1;
     }
 
     printToScreen(x);
     freeMatrix(x);
-	
 
 	freeMatrix(A);
 	freeMatrix(b);
