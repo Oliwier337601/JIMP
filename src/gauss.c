@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "gauss.h"
 
 double mfabs(double d){ return (d >= 0) ? d : -d;}
@@ -68,6 +69,11 @@ double det_matrix(Matrix *mat){
  * Zwraca 1 - macierz osobliwa - dzielenie przez 0
  */
 int eliminate(Matrix *mat, Matrix *b){
+    double det = det_matrix(mat);
+    printf("det=%f\n", det);
+    if (det_matrix(mat) == 0)
+        return 1;
+    
     int col = 0;
     for (int row = 0; row < mat->r; row++){
         int elem_row = main_elem(mat, col, row);
@@ -76,6 +82,6 @@ int eliminate(Matrix *mat, Matrix *b){
         }
         operation(mat, b, row);
     }
-    return det_matrix(mat) == 0 ? 1 : 0;
+    return 0;
 }
 
